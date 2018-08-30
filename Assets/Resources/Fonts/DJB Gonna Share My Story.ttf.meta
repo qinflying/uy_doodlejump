@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 2cf50629425e1c8438ed0daae64f61cd
+timeCreated: 1535637490
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DJB Gonna Share My Story
+  fontNames:
+  - DJB Gonna Share My Story
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
