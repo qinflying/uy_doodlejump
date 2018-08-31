@@ -37,11 +37,30 @@ Unity2D 正交相机的纵向长度**height＝size*2**
 
 
 
-#### 3.Rigidbody2D刚体运动相关
+#### 3.Rigidbody刚体运动相关(3D和2D）
 
-a.AddForce方法
+a.velocity:
 
-b.ForceMode2D枚举
+```
+瞬间给物体一个恒定的速度，将物体提升至该速度。
+```
+
+b.AddForce:
+
+```
+添加一个力到刚体。作为结果刚体将开始移动。
+```
+
+c.ForceMode:
+
+```
+ 刚体运动速度的计算公式是：f•t=m•v
+ ForceMode.Force：给物体添加一个持续的力并使用其质量。
+ ForceMode.Acceleration：给物体添加一个持续的加速度，但是忽略其质量。
+ 	即无论设置的质量为多少，都采用默认质量1
+ ForceMode.Impulse：给物体添加一个瞬间的力并使用其质量
+ ForceMode.VelocityChange：给物体添加一个瞬间的加速度，但是忽略其质量
+```
 
 
 
