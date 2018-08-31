@@ -77,3 +77,19 @@ c.Input.GetKey获得持续按键状态
 d.Time.time?
 
 e.翻转时的偏移问题，重心不对称;编辑图片的中心SpriteEditor
+
+
+
+#### 5.视口坐标转换
+
+a.视口坐标系：以左下角（0,0），右上角（1,1）。
+
+b.ViewportToWorldPoint;
+
+
+
+#### 6.层级相关
+
+a.Sorting Layer
+
+b.Order in Layer
