@@ -25,11 +25,10 @@ public class FollowTarget : MonoBehaviour
         Vector3 dest = transform.position + diff;
         dest.x = 0;
 
-        //diff = new Vector3(transform.position.x, diff.y, transform.position.z);
-
         if (dest.y > transform.position.y)
         {
-            transform.position = Vector3.SmoothDamp(transform.position, dest, ref refVelocity, followSmooth * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, dest
+                , ref refVelocity, followSmooth * Time.deltaTime);
             Debug.Log(refVelocity);
         }
     }
