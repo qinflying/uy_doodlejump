@@ -15,9 +15,13 @@ public class GameManager : MonoSingleton<GameManager>
         base.Awake();
     }
 
+    void Start() {
+        //初始化Tile权重
+        titleSettings.InitCalWeight();
+    }
 
     //生成Tile
-    public GameObject SpawnTile()
+    private GameObject SpawnTile()
     {
         GameObject oTile;
         if (tilePool.Count > 0)
@@ -36,10 +40,35 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     //回收Tile
-    public void RecycleTile(GameObject oTile) {
+    private void RecycleTile(GameObject oTile) {
         oTile.SetActive(false);
         if (!tilePool.Contains(oTile)) {
             tilePool.Enqueue(oTile);
         }
+    }
+
+    //生成对象
+    public GameObject Spawn(SpawnType spawnType){
+        GameObject go = null;
+        switch (spawnType) { 
+            case SpawnType.Tile:
+                go = SpawnTile();
+                break;
+        }
+
+        return go;
+    }
+
+    //回收对象
+    public void Recycle(GameObject go, SpawnType spawnType) { 
+        switch(spawnType){
+            case SpawnType.Tile:
+                RecycleTile(go);
+                break;
+        }
+    }
+
+    public enum SpawnType{
+        Tile,
     }
 }

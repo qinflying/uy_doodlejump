@@ -35,8 +35,8 @@ public class Tile : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    void Start()
+    // Active激活初始化
+    void OnEnable()
     {
         InitTile(mode);
     }
