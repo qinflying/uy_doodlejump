@@ -93,3 +93,38 @@ b.ViewportToWorldPoint;
 a.Sorting Layer
 
 b.Order in Layer
+
+
+
+#### 7.平滑移动
+
+a.Vector3.SmoothDump
+
+
+
+#### 8.单例模板
+
+```C#
+public abstract class MonoSingleton<T> : MonoBehaviour
+    where T : MonoBehaviour
+{
+    private static T _instance;
+
+    public static T Instance
+    {
+        get { return _instance; }
+    }
+
+    protected virtual void Awake()
+    {
+        _instance = this as T;
+    }
+}
+```
+
+
+
+#### 9.对象池
+
+#### 10.序列化设置类，方便面板调设置。
+
