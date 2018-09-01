@@ -21,7 +21,8 @@ public abstract class SerializeTileBase
     }
 
     //随机高度
-    public float RandHeight() {
+    public float RandHeight()
+    {
         return UnityEngine.Random.Range(minHeight, maxHeight);
     }
 }
@@ -88,7 +89,7 @@ public class TileSetting
         _weight += tileVerticalMove.weight;
     }
 
-    public TileMode GetTileModeByRandWeight()
+    public SerializeTileBase GetTileConfigByRandWeight()
     {
         float randWeiget = UnityEngine.Random.Range(0, _weight);
         SerializeTileBase[] tiles = { 
@@ -97,13 +98,13 @@ public class TileSetting
             tileHorzontalMove, tileVerticalMove
         };
 
-        TileMode mode = TileMode.Normal;
-        foreach (SerializeTileBase oSerializeTile in tiles) {
-            if (oSerializeTile.IsRandMeWithAllWeight(ref randWeiget)) {
-                mode = oSerializeTile.mode;
-                break;
+        foreach (SerializeTileBase oSerializeTile in tiles)
+        {
+            if (oSerializeTile.IsRandMeWithAllWeight(ref randWeiget))
+            {
+                return oSerializeTile;
             }
         }
-        return mode;
+        return tileNormal;
     }
 }
