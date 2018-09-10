@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Common;
 
 public class Player : MonoBehaviour {
 
@@ -14,6 +15,9 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!GameManager.Instance.IsRunning()) {
+            return;
+        }
         OnHorizontalControl();
 	}
 
@@ -41,12 +45,18 @@ public class Player : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D oCollider) {
-        if (oCollider.tag == "platform") {
+        if (oCollider.tag == Common.Tag.platform) {
             ToJumpAction();
+        }
+        if (oCollider.tag == Common.Tag.bottomborder) {
+            GameManager.Instance.GameOver();
         }
     }
 
     public void ToJumpAction(float factor = 1f) {
+        if (!GameManager.Instance.IsRunning()) {
+            return;
+        }
         //跳起之前清空之前的速度
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 12 * factor), ForceMode2D.Impulse);

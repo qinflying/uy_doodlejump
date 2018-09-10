@@ -13,5 +13,6 @@ namespace Common
         public static string player = "Player";
         public static string tile = "Tile";
         public static string bottomborder = "bottomborder";
+        public static string platform = "platform";
     }
 }

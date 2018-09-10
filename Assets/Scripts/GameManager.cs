@@ -12,6 +12,8 @@ public class GameManager : MonoSingleton<GameManager>
     public int initTileCount = 50;          //初始Tile数量
     private float currentTileHeight = 0;    //当前生成tile的总高度
 
+    public GameState gameState = GameState.Running;
+
     protected override void Awake()
     {
         base.Awake();
@@ -99,8 +101,22 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    public bool IsRunning() {
+        return gameState == GameState.Running;
+    }
+
+    public void GameOver() {
+        gameState = GameState.GameOver;
+    }
+
     public enum SpawnType
     {
         Tile,
+    }
+
+    public enum GameState { 
+        Paused,
+        Running,
+        GameOver,
     }
 }

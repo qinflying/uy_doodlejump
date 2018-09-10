@@ -19,6 +19,7 @@ public class Tile : MonoBehaviour
     private float moveSpeed;
     private float moveDistance;
     private Vector3 startPosition;
+    private int direction;          //  移动方向0.left/up, 1.right/down
 
     public TileMode Mode
     {
@@ -71,8 +72,61 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HorizontalAndVerticalAutoMove();
     }
 
+    void HorizontalAndVerticalAutoMove()
+    {
+        switch (Mode)
+        {
+            case TileMode.HorizontalMove:
+                OnHorizontalAutoMove();
+                break;
+            case TileMode.VerticalMove:
+                OnVerticalAutoMove();
+                break;
+        }
+    }
+
+    private void OnHorizontalAutoMove()
+    {
+        if (direction == 0)
+        {
+            transform.Translate(new Vector2(-moveSpeed * Time.deltaTime, 0));
+            if (Vector3.Distance(transform.position, startPosition) >= moveDistance)
+            {
+                direction = 1;
+            }
+        }
+        else if (direction == 1)
+        {
+            transform.Translate(new Vector2(moveSpeed * Time.deltaTime, 0));
+            if (transform.position.x >= startPosition.x)
+            {
+                direction = 0;
+            }
+        }
+    }
+
+    private void OnVerticalAutoMove()
+    {
+        if (direction == 0)
+        {
+            transform.Translate(new Vector2(0, moveSpeed * Time.deltaTime));
+            if (Vector3.Distance(transform.position, startPosition) >= moveDistance)
+            {
+                direction = 1;
+            }
+        }
+        else if (direction == 1)
+        {
+            transform.Translate(new Vector2(0, -moveSpeed * Time.deltaTime));
+            if (transform.position.y <= startPosition.y)
+            {
+                direction = 0;
+            }
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
